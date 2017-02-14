@@ -38,4 +38,4 @@ Check to see if an instance is already open by hitting alt + tab or check the ta
 2. Type `cd vscode` then hit enter
 3. Type `./scripts/code.sh` then hit enter (be patient takes a while to fully load UI)
 
-NOTE: The terminal command `./scripts/code.sh` is what runs VS code so if you need to make any commands in terminal open a new terminal instance. Be careful not to accidentally close the terminal running VS code or data could be lost (VS code autosave feature is turned on but is not a guarantee to prevent data loss)
+NOTE: The terminal command `./scripts/code.sh` is what runs VS code so if you need to make any commands in terminal open a new terminal instance. Be careful not to accidentally close the terminal running VS code or data could be lost (VS code autosave feature is turned on but it is not a guarantee to prevent data loss)
