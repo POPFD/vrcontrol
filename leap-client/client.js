@@ -11,16 +11,20 @@ Cylon.robot({
 
   work: function(my) {
 
-    my.leapmotion.on('frame', function(frame) {
-      //console.log(frame);
-    });
-
     my.leapmotion.on('hand', function(hand) {
-      console.log(hand);
+
+      var fingersExtended = 0;
+
+      for (var i = 0; i < 5; i++) {
+
+        process.stdout.write(hand.fingers[i].extended + ', ');
+
+        if (hand.fingers[i].extended == true)
+          fingersExtended++;
+      }
+
+      process.stdout.write(fingersExtended + '\n');
     });
 
-    my.leapmotion.on('gesture', function(gest) {
-      //console.log(gest);
-    });
   }
 }).start();
