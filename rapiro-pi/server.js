@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(express.static(__dirname));
 
 // Add service endpoints to server (can be found in services folder)
+var rapiroService = require("./services/rapiroApi");
 
 
 // Set up server
