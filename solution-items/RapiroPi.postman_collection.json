@@ -43,7 +43,7 @@
 					"mode": "raw",
 					"raw": "{\n\t\"direction\" : \"right\"\n}"
 				},
-				"description": ""
+				"description": "Send direction signal to move rapiro's head"
 			},
 			"response": []
 		},
@@ -63,7 +63,7 @@
 					"mode": "raw",
 					"raw": "{\n\t\"direction\" : \"right\"\n}"
 				},
-				"description": ""
+				"description": "Get the video feed from rapiro's camera"
 			},
 			"response": []
 		}
