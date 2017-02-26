@@ -1,22 +1,25 @@
 let express = require("express");
-const app = express();
 let bodyParser = require("body-parser");
+const app = express();
 
 // Set payload to 50mb might need to change depending on video file stream size
 app.use(bodyParser.json({ limit: "50mb" }));   
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 
-// set root directory (sets root to /)
+// Set root directory (sets root to /)
 app.use(express.static(__dirname));
 
 // Add service endpoints to server (can be found in services folder)
-var rapiroService = require("./services/rapiroApi");
-
+const rapiroService = require("./services/rapiroApi")(app);
+const resourcesService = require("./services/resourcesApi")(app);
 
 // Set up server
-var server = app.listen(8001, function () {
+const server = app.listen(8001, function () {
     var port = server.address().port;
 
     console.log("Rapiro Pi Server started on port: " + port);
 
 });
+
+// Just in case for unit test mocking
+module.exports = server;
