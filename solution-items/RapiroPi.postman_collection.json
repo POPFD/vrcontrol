@@ -1,0 +1,71 @@
+{
+	"variables": [],
+	"info": {
+		"name": "RapiroPi",
+		"_postman_id": "2e6dc7d3-eaee-e6e9-c469-e078e0a5d575",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "BodyMovement",
+			"request": {
+				"url": "http://localhost:8001/api/rapiro/body-movement",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"direction\" : \"left\"\n}"
+				},
+				"description": "Send direction signal to move rapiro's body"
+			},
+			"response": []
+		},
+		{
+			"name": "HeadMovement",
+			"request": {
+				"url": "http://localhost:8001/api/rapiro/head-movement",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"direction\" : \"right\"\n}"
+				},
+				"description": "Send direction signal to move rapiro's head"
+			},
+			"response": []
+		},
+		{
+			"name": "GetVideoFeed",
+			"request": {
+				"url": "http://localhost:8001/api/rapiro/resources/get-video-feed",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"direction\" : \"right\"\n}"
+				},
+				"description": "Get the video feed from rapiro's camera"
+			},
+			"response": []
+		}
+	]
+}

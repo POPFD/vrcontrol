@@ -20,7 +20,7 @@ VRControl of Rapiro Robot using NodeJS, Leap etc.fil
 2. Click File -> Site Manager
 3. Click New Site and name `rapiro-pi-admin`
 4. Set host to `rapiro-pi.ddns.net`
-5. Set Port to `5900`
+5. Set Port to `22`
 6. Set Protocol to `SFTP - SSH File Transfer Protocol`
 7. Set Logon Type to `Normal`
 8. Set User to `admin`
