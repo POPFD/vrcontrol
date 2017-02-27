@@ -16,6 +16,13 @@ VRControl of Rapiro Robot using NodeJS, Leap etc.fil
 9. Click OK 
 
 ## Connecting to Rapiro-Pi via SSH ##
+1. Open your preferred SSH Client Putty etc.
+2. Set host to `rapiro-pi.ddns.net`
+3. Set Port to `22`
+4. Username is `admin`
+5. Password is `VRcontrol17`
+
+## Connecting to Rapiro-Pi via FTP (Filezilla) ##
 1. Download Filezilla from [https://filezilla-project.org/download.php?type=client](https://filezilla-project.org/download.php?type=client)
 2. Click File -> Site Manager
 3. Click New Site and name `rapiro-pi-admin`
@@ -28,8 +35,6 @@ VRControl of Rapiro Robot using NodeJS, Leap etc.fil
 10. Click connect
 
 The connection will be saved and can be accessed again from Open Site Manager tab
-
-## Connecting to Rapiro-Pi via FTP (Filezilla) ##
 
 ## Accessing Visual Studio Code in Rapiro-Pi ##
 Check to see if an instance is already open by hitting alt + tab or check the taskbar at the top (known bug sometimes disappears so use alt + tab or equivalent to OS you are on)

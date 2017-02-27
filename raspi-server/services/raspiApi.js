@@ -1,13 +1,14 @@
 module.exports = function (app) {
 
-    const resourceBusiness = require("../business/resourceBusiness");
-    const baseUrl = "/api/rapiro/resources";
+    const raspiBusiness = require("../business/raspiBusiness");
+    const baseUrl = "/api/raspi";
    
-    // Defines endpoint for resources video feed (api/rapiro/get-video-feed)
-    app.get(`${baseUrl}/get-video-feed`, function (req, res) {
+    // Defines endpoint for zumo arduino movement (api/raspi/motor-movement)
+    app.post(`${baseUrl}/motor-movement`, function (req, res) {
+        let direction = req.body.direction;
 
         // Call business and provide error handling (returns json response with status code)
-        resourceBusiness.getRapiroVideoFeed(function (err, result) {
+        raspiBusiness.moveZumo(direction, function (err, result) {
             if(err) {
                 res.status(500).json(err);
             } else if (result) {
