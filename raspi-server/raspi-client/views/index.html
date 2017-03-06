@@ -8,7 +8,70 @@
 </head>
 
 <body>
-    Raspi Client
+
+  <div id="start">
+    <button onclick="javascript:start()">Start</button>
+  </div>
+    
+  <div id="main" >
+    <h2>Device Orientation</h2>
+    <table>
+      <tr>
+        <td>Event Supported</td>
+        <td id="doEvent"></td>
+      </tr>
+      <tr>
+        <td>Zero [compassZero]</td>
+        <td id="zero"></td>
+      </tr>
+      <tr>
+        <td>Direction [alpha]</td>
+        <td id="alpha"></td>
+      </tr>
+      <tr>
+        <td>Relative direction [alpha]</td>
+        <td id="relative"></td>
+      </tr>
+     </table>
+  </div>
+
+
+  <script>
+    var compassZero;
+    var compassdir;
+    var relativeHeading;
+
+    function start() {
+      zeroCompass();
+
+    }
+
+    function zeroCompass() {
+      compassZero = compassdir;
+    }
+
+    if (window.DeviceOrientationEvent) { 
+
+      document.getElementById("doEvent").innerHTML = "DeviceOrientation";
+      window.addEventListener('deviceorientation', function(event) {
+        
+
+        // Apple only works with webkitCompassHeading, alpha works otherwise
+        if(event.webkitCompassHeading) compassdir = event.webkitCompassHeading;  
+        else compassdir = -event.alpha;
+
+        if( compassZero!=null )
+
+         relativeHeading = compassdir - compassZero;
+        
+        document.getElementById('alpha').innerHTML = Math.round(compassdir);
+        document.getElementById('zero').innerHTML = Math.round(compassZero);
+        document.getElementById('relative').innerHTML = Math.round(relativeHeading);
+      }, false);
+    } else {
+      document.getElementById("doEvent").innerHTML = "Not supported."
+    }
+  </script>
 
 
     <script src="../js/site.js"></script>
