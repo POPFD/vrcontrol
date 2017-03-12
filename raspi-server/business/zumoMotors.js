@@ -30,9 +30,10 @@ Cylon.robot({
 
     /* Sets the direction pin for forward/backward */
     this.dirL.digitalWrite(reverse);
-  }
+  },
 
   setRightSpeed: function(speed) {
+
     var reverse = 0;
 
     /* Set reverse variable if speed is a negative */
@@ -50,9 +51,12 @@ Cylon.robot({
 
     /* Sets the direction pin for forward/backward */
     this.dirR.digitalWrite(reverse);
-  }
+  },
 
   work: function(my) {
     /* Do nothing as of yet */
+    console.log(this);
   }
 }).start();
+
+module.exports = Cylon.robot;
