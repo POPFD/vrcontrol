@@ -1,3 +1,5 @@
+var zumoMotors = require('../business/zumoMotors');
+
 (function (raspi) {
 
     const forward = "forward";
@@ -11,7 +13,11 @@
         // Get current time 
         let datetime = new Date(new Date().getTime()).toLocaleTimeString();
 
-        if (direction) {
+
+      /* Debug example */
+      //zumoMotors.setLeftSpeed(0);
+
+      if (direction) {
             var result = invalidCommand;
 
             // Check direction
@@ -37,23 +43,23 @@
                 result = "Stopping zumo";
             }
 
-            callback(null, result);
+          callback(null, result);
             
             var logMessage = `${datetime} - ${result}`;
             console.log(logMessage);
-        } else {
-            // Error occurred no direction was present
+      } else {
+          // Error occurred no direction was present
             var err = "Direction parameter was not supplied";
-            
-            callback(err, null);
+
+          callback(err, null);
 
             var logMessage = `${datetime} - ${result}`;
             console.log(logMessage);
-        }
+      }
     };
 
     raspi.getVideoFeed = function (callback) {
-        
+
     };
 
 })(module.exports); 
