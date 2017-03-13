@@ -1,5 +1,11 @@
 var Cylon = require('cylon');
 
+/* Module variables */
+var hasChanged = false;
+var currLeftSpeed = 0;
+var currRightSpeed = 0;
+
+/* Module code */
 Cylon.robot({
   name: 'ZumoMotors',
 
@@ -55,10 +61,35 @@ Cylon.robot({
   },
 
   work: function(my) {
-    every((1).seconds(), function() {
-      /* Need to keep the robot active so empty loop */
-    });
+
+    /* Every 100ms check if speeds have changed */
+    setInterval(function() {
+      console.log("Has Changed: " + hasChanged);
+      /* If speeds have changed */
+      if (hasChanged == true) {
+        my.setLeftSpeed(currLeftSpeed);
+        my.setRightSpeed(currRightSpeed);
+
+        hasChanged = false;
+        console.log("Set speeds: " + currLeftSpeed + "," + currRightSpeed);
+      }
+    }, 100);
   }
 }).start();
 
-module.exports = Cylon;
+/* Module exports */
+module.exports.setLeftSpeed = function(speed) {
+  currLeftSpeed = speed;
+  hasChanged = true;
+};
+
+module.exports.setLeftSpeed = function(speed) {
+  currRightSpeed = speed;
+  hasChanged = true;
+};
+
+module.exports.setSpeeds = function(leftSpeed, rightSpeed) {
+  currLeftSpeed = leftSpeed;
+  currRightSpeed = rightSpeed;
+  hasChanged = true;
+};
