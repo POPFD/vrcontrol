@@ -1,6 +1,8 @@
 var Cylon = require('cylon');
 
 Cylon.robot({
+  name: 'ZumoMotors',
+
   connections: {
     arduino: { adaptor: 'firmata', port: '/dev/ttyACM0' }
   },
@@ -55,8 +57,10 @@ Cylon.robot({
   },
 
   work: function(my) {
-    /* Do nothing as of yet */
+    every((1).seconds(), function() {
+      /* Need to keep the robot active so empty loop */
+    });
   }
 }).start();
 
-module.exports = Cylon.robot;
+module.exports = Cylon;
