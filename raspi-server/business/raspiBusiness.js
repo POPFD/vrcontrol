@@ -1,7 +1,5 @@
 var zumoMotors = require('../business/zumoMotors');
 
-console.log(zumoMotors);
-
 (function (raspi) {
 
     raspi.moveZumo = function (direction, callback) {
