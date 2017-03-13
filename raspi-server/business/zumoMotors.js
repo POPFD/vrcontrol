@@ -59,4 +59,4 @@ Cylon.robot({
   }
 }).start();
 
-module.exports = Cylon.robot.commands;
+module.exports = Cylon.robot;
