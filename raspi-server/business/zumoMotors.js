@@ -64,7 +64,6 @@ Cylon.robot({
 
     /* Every 100ms check if speeds have changed */
     setInterval(function() {
-      console.log("Has Changed: " + hasChanged);
 
       /* If speeds have changed */
       if (hasChanged == true) {
