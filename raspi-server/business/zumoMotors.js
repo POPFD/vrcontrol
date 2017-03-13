@@ -65,6 +65,7 @@ Cylon.robot({
     /* Every 100ms check if speeds have changed */
     setInterval(function() {
       console.log("Has Changed: " + hasChanged);
+
       /* If speeds have changed */
       if (hasChanged == true) {
         my.setLeftSpeed(currLeftSpeed);
@@ -83,7 +84,7 @@ module.exports.setLeftSpeed = function(speed) {
   hasChanged = true;
 };
 
-module.exports.setLeftSpeed = function(speed) {
+module.exports.setRightSpeed = function(speed) {
   currRightSpeed = speed;
   hasChanged = true;
 };
