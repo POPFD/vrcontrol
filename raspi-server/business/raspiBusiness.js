@@ -1,7 +1,5 @@
 (function (raspi) {
-
-    var zumoMotors = require('../business/zumoMotors');
-
+    const zumoMotors = require('../business/zumoMotors');
     const forward = "forward";
     const backward = "backward";
     const left = "left";
@@ -9,6 +7,7 @@
     const stop = "stop";
     const invalidCommand = "Command not recognised available commands are: 'forward', 'backward', 'left', 'right', 'stop'."
     const speed = 200;
+    const noSpeed = 200;
 
     raspi.moveZumo = function (direction, callback) {
         // Get current time 
@@ -25,18 +24,22 @@
                 result = "Moving zumo forwards";
             } else if (direction === backward) {
                 // Call zumo motors library 
+                zumoMotors.setSpeeds(-speed, -speed);
 
                 result = "Moving zumo backwards";
             } else if (direction === left) {
                 // Call zumo motors library 
+                zumoMotors.setSpeeds(noSpeed, speed);
 
                 result = "Turning zumo to the left";
             } else if (direction === right) {
                 // Call zumo motors library 
+                zumoMotors.setSpeeds(speed, noSpeed);
 
                 result = "Turning zumo to the right";
             } else if (direction === stop) {
                 // Call zumo motors library 
+                zumoMotors.setSpeeds(noSpeed, noSpeed);
 
                 result = "Stopping zumo";
             }
@@ -51,13 +54,8 @@
 
             callback(err, null);
 
-            var logMessage = `${datetime} - ${result}`;
+            var logMessage = `${datetime} - ${err}`;
             console.log(logMessage);
         }
     };
-
-    raspi.getVideoFeed = function (callback) {
-
-    };
-
 })(module.exports); 
