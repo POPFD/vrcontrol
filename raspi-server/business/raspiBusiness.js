@@ -1,27 +1,95 @@
-var zumoMotors = require('../business/zumoInterface');
-
 (function (raspi) {
+    var zumoInterface = require('../business/zumoInterface');
+    const FORWARD = "forward";
+    const BACKWARD = "backward";
+    const LEFT = "left";
+    const RIGHT = "right";
+    const STOP = "stop";
+    const INVALID_COMMAND = "Command not recognised available commands are: 'forward', 'backward', 'left', 'right', 'stop'."
+    const NO_PARAMETER = "Direction parameter was not supplied";
 
     raspi.moveZumo = function (direction, callback) {
+        // Get current time 
+        let datetime = new Date(new Date().getTime()).toLocaleTimeString();
+        let result;
 
-      /* Debug example */
-      //zumoMotors.setLeftSpeed(0);
+        if (direction) {
+            switch (direction) {
+                case FORWARD:
+                    // Call zumo interface to send command
+                    zumoInterface.moveForward(function (err) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            result = "Moving zumo forwards";
+                            console.log(`${datetime} - ${result}`);
 
-      if (direction) {
-          // Use cylon.js library here
-          var result = "Sending direction command to zumo arduino";
+                            callback(null, result);
+                        }
+                    });
+                    break;
+                case BACKWARD:
+                    // Call zumo interface to send command
+                    zumoInterface.moveBackward(function (err) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            result = "Moving zumo backwards";
+                            console.log(`${datetime} - ${result}`);
 
-          callback(null, result);
-      } else {
-          // Error occurred no direction was present
-          var err = "Could not talk to zumo arduino";
+                            callback(null, result);
+                        }
+                    });   
+                    break;
+                case LEFT:
+                    // Call zumo interface to send command
+                    zumoInterface.moveLeft(function (err) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            result = "Turning zumo to the left";
+                            console.log(`${datetime} - ${result}`);
 
-          callback(err, null);
-      }
+                            callback(null, result);
+                        }
+                    });
+                    break;
+                case RIGHT:
+                    // Call zumo interface to send command
+                    zumoInterface.moveRight(function (err) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            result = "Turning zumo to the right";
+                            console.log(`${datetime} - ${result}`);
+
+                            callback(null, result);
+                        }
+                    });
+                    break;
+                case STOP:
+                    // Call zumo interface to send command
+                    zumoInterface.stopMovement(function (err) {
+                        if (err) {
+                            callback(err, null);
+                        } else {
+                            result = "Stopping zumo";
+                            console.log(`${datetime} - ${result}`);
+
+                            callback(null, result);
+                        }
+                    });
+                    break;
+                default:
+                    console.log(`${datetime} - ${INVALID_COMMAND}`);
+
+                    callback(INVALID_COMMAND, null);
+            }           
+        } else {
+            // Error occurred no direction was present
+            console.log(`${datetime} - ${NO_PARAMETER}`);
+
+            callback(NO_PARAMETER, null);            
+        }
     };
-
-    raspi.getVideoFeed = function (callback) {
-
-    };
-
-})(module.exports);
+})(module.exports); 

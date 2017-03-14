@@ -3,7 +3,7 @@ var Cylon = require('cylon');
 
 /* URL to send post requests to */
 var serverURL = 'http://localhost:8001';
-var serverRoute = '/api/raspi/motor-movement';
+var serverRoute = '/api/move-zumo';
 
 function sendPOST(postData) {
   request.post(
