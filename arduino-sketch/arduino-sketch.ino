@@ -63,6 +63,7 @@ void loop()
       case CHAR_STOP:
       {
         motors.setSpeeds(NO_SPEED, NO_SPEED);
+        break;
       }
     }
 
