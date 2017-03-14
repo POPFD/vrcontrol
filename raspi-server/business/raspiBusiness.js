@@ -22,6 +22,8 @@
                         callback(err, null);
                     } else {
                         result = "Moving zumo forwards";
+                        console.log(`${datetime} - ${result}`);
+
                         callback(null, result);
                     }
                 });                
@@ -32,6 +34,8 @@
                         callback(err, null);
                     } else {
                         result = "Moving zumo backwards";
+                        console.log(`${datetime} - ${result}`);
+
                         callback(null, result);
                     }
                 });                     
@@ -42,6 +46,8 @@
                         callback(err, null);
                     } else {
                         result = "Turning zumo to the left";
+                        console.log(`${datetime} - ${result}`);
+
                         callback(null, result);
                     }
                 });                      
@@ -52,6 +58,8 @@
                         callback(err, null);
                     } else {
                         result = "Turning zumo to the right";
+                        console.log(`${datetime} - ${result}`);
+
                         callback(null, result);
                     }
                 });                         
@@ -62,6 +70,8 @@
                         callback(err, null);
                     } else {
                         result = "Stopping zumo";
+                        console.log(`${datetime} - ${result}`);
+
                         callback(null, result);
                     }
                 });             
