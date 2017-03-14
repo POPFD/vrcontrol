@@ -17,7 +17,7 @@ port.on('error', function(err) {
     console.log('Error: ', err.message);
 });
 
-module.exports.moveForward = function() {
+module.exports.moveForward = function (err) {
     port.write(CHAR_FORWARD, function(err) {
         if (err) {
             return `Error moving zumo forwards: ${err.message}`;
@@ -27,8 +27,8 @@ module.exports.moveForward = function() {
     });
 };
 
-module.exports.moveBackward = function() {
-    port.write(CHAR_BACKWARD, function(err) {
+module.exports.moveBackward = function (err) {
+    port.write(CHAR_BACKWARD, function (err) {
         if (err) {
             return `Error moving zumo backwards: ${err.message}`;
         } else {
@@ -37,7 +37,7 @@ module.exports.moveBackward = function() {
     });
 };
 
-module.exports.moveLeft = function () {
+module.exports.moveLeft = function (err) {
     port.write(CHAR_LEFT, function (err) {
         if (err) {
             return `Error turning zumo to the left: ${err.message}`;
@@ -47,7 +47,7 @@ module.exports.moveLeft = function () {
     });
 };
 
-module.exports.moveRight = function() {
+module.exports.moveRight = function (err) {
     port.write(CHAR_RIGHT, function(err) {
         if (err) {
             return `Error turning zumo to the right: ${err.message}`;
@@ -57,7 +57,7 @@ module.exports.moveRight = function() {
     });
 };
 
-module.exports.stopMovement = function() {
+module.exports.stopMovement = function (err) {
     port.write(CHAR_STOP, function(err) {
         if (err) {
             return `Error stopping the zumo: ${err.message}`;

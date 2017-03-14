@@ -9,7 +9,7 @@ module.exports = function (app) {
 
         // Call business and provide error handling (returns json response with status code)
         raspiBusiness.moveZumo(direction, function (err, result) {
-            if(err) {
+            if (err) {
                 res.status(500).json(err);
             } else if (result) {
                 res.status(200).json(result);
