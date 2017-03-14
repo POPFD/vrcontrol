@@ -1,4 +1,4 @@
-var zumoMotors = require('../business/zumoMotors');
+var zumoMotors = require('../business/zumoInterface');
 
 (function (raspi) {
 
