@@ -1,14 +1,11 @@
-var zumoMotors = require('../business/zumoInterface');
 (function (raspi) {
-    const zumoMotors = require('../business/zumoMotors');
+    var zumoInterface = require('../business/zumoInterface');
     const forward = "forward";
     const backward = "backward";
     const left = "left";
     const right = "right";
     const stop = "stop";
     const invalidCommand = "Command not recognised available commands are: 'forward', 'backward', 'left', 'right', 'stop'."
-    const speed = 200;
-    const noSpeed = 200;
 
     raspi.moveZumo = function (direction, callback) {
         // Get current time 
@@ -19,33 +16,56 @@ var zumoMotors = require('../business/zumoInterface');
 
             // Check direction
             if (direction === forward) {
-                // Call zumo motors library 
-                zumoMotors.setSpeeds(speed, speed);
-
-                result = "Moving zumo forwards";
+                // Call zumo interface to send command
+                zumoInterface.moveForward(function (err) {
+                    if (err) {
+                        result = "Moving zumo forwards";
+                        callback(null, result);
+                    } else {
+                        callback(err, null);
+                    }
+                });                
             } else if (direction === backward) {
-                // Call zumo motors library 
-                zumoMotors.setSpeeds(-speed, -speed);
-
-                result = "Moving zumo backwards";
+                // Call zumo interface to send command
+                zumoInterface.moveBackward(function (err) {
+                    if (err) {
+                        result = "Moving zumo backwards";
+                        callback(null, result);
+                    } else {
+                        callback(err, null);
+                    }
+                });                     
             } else if (direction === left) {
-                // Call zumo motors library 
-                zumoMotors.setSpeeds(noSpeed, speed);
-
-                result = "Turning zumo to the left";
+                // Call zumo interface to send command
+                zumoInterface.moveLeft(function (err) {
+                    if (err) {
+                        result = "Turning zumo to the left";
+                        callback(null, result);
+                    } else {
+                        callback(err, null);
+                    }
+                });                      
             } else if (direction === right) {
-                // Call zumo motors library 
-                zumoMotors.setSpeeds(speed, noSpeed);
-
-                result = "Turning zumo to the right";
+                // Call zumo interface to send command
+                zumoInterface.moveRight(function (err) {
+                    if (err) {
+                        result = "Turning zumo to the right";
+                        callback(null, result);
+                    } else {
+                        callback(err, null);
+                    }
+                });                         
             } else if (direction === stop) {
-                // Call zumo motors library 
-                zumoMotors.setSpeeds(noSpeed, noSpeed);
-
-                result = "Stopping zumo";
-            }
-
-            callback(null, result);
+                // Call zumo interface to send command
+                zumoInterface.stopMovement(function (err) {
+                    if (err) {
+                        result = "Stopping zumo";
+                        callback(null, result);
+                    } else {
+                        callback(err, null);
+                    }
+                });             
+            }            
             
             var logMessage = `${datetime} - ${result}`;
             console.log(logMessage);
