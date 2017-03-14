@@ -17,52 +17,57 @@ port.on('error', function(err) {
     console.log('Error: ', err.message);
 });
 
-module.exports.moveForward = function (err) {
+module.exports.moveForward = function (callback) {
     port.write(CHAR_FORWARD, function(err) {
         if (err) {
-            return `Error moving zumo forwards: ${err.message}`;
+            var message = `Error moving zumo forwards: ${err.message}`;
+            callback(err);
         } else {
-            return null;
+            callback(null);
         }
     });
 };
 
-module.exports.moveBackward = function (err) {
+module.exports.moveBackward = function (callback) {
     port.write(CHAR_BACKWARD, function (err) {
         if (err) {
-            return `Error moving zumo backwards: ${err.message}`;
+            var message = `Error moving zumo backwards: ${err.message}`;
+            callback(err);
         } else {
-            return null;
+            callback(null);
         }
     });
 };
 
-module.exports.moveLeft = function (err) {
+module.exports.moveLeft = function (callback) {
     port.write(CHAR_LEFT, function (err) {
         if (err) {
-            return `Error turning zumo to the left: ${err.message}`;
+            var message = `Error turning zumo to the left: ${err.message}`;
+            callback(err);
         } else {
-            return null;
+            callback(null);
         }
     });
 };
 
-module.exports.moveRight = function (err) {
+module.exports.moveRight = function (callback) {
     port.write(CHAR_RIGHT, function(err) {
         if (err) {
-            return `Error turning zumo to the right: ${err.message}`;
+            var message = `Error turning zumo to the right: ${err.message}`;
+            callback(err);
         } else {
-            return null;
+            callback(null);
         }
     });
 };
 
-module.exports.stopMovement = function (err) {
+module.exports.stopMovement = function (callback) {
     port.write(CHAR_STOP, function(err) {
         if (err) {
-            return `Error stopping the zumo: ${err.message}`;
+            var message = `Error stopping the zumo: ${err.message}`;
+            callback(err);
         } else {
-            return null;
+            callback(null);
         }
     });
 };

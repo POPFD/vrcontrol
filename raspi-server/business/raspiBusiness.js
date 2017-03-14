@@ -75,18 +75,18 @@
                         callback(null, result);
                     }
                 });             
+            } else {
+                var err = invalidCommand;
+                console.log(`${datetime} - ${err}`);
+
+                callback(err, null);
             }            
-            
-            var logMessage = `${datetime} - ${result}`;
-            console.log(logMessage);
         } else {
             // Error occurred no direction was present
             var err = "Direction parameter was not supplied";
+            console.log(`${datetime} - ${err}`);
 
-            callback(err, null);
-
-            var logMessage = `${datetime} - ${err}`;
-            console.log(logMessage);
+            callback(err, null);            
         }
     };
 })(module.exports); 
