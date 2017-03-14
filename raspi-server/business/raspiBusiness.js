@@ -12,57 +12,57 @@
         let datetime = new Date(new Date().getTime()).toLocaleTimeString();
 
         if (direction) {
-            var result = invalidCommand;
+            let result = invalidCommand;
 
             // Check direction
             if (direction === forward) {
                 // Call zumo interface to send command
                 zumoInterface.moveForward(function (err) {
-                    if (err) {
+                    if (err) {                        
+                        callback(err, null);
+                    } else {
                         result = "Moving zumo forwards";
                         callback(null, result);
-                    } else {
-                        callback(err, null);
                     }
                 });                
             } else if (direction === backward) {
                 // Call zumo interface to send command
                 zumoInterface.moveBackward(function (err) {
                     if (err) {
+                        callback(err, null);
+                    } else {
                         result = "Moving zumo backwards";
                         callback(null, result);
-                    } else {
-                        callback(err, null);
                     }
                 });                     
             } else if (direction === left) {
                 // Call zumo interface to send command
                 zumoInterface.moveLeft(function (err) {
                     if (err) {
+                        callback(err, null);
+                    } else {
                         result = "Turning zumo to the left";
                         callback(null, result);
-                    } else {
-                        callback(err, null);
                     }
                 });                      
             } else if (direction === right) {
                 // Call zumo interface to send command
                 zumoInterface.moveRight(function (err) {
                     if (err) {
+                        callback(err, null);
+                    } else {
                         result = "Turning zumo to the right";
                         callback(null, result);
-                    } else {
-                        callback(err, null);
                     }
                 });                         
             } else if (direction === stop) {
                 // Call zumo interface to send command
                 zumoInterface.stopMovement(function (err) {
                     if (err) {
+                        callback(err, null);
+                    } else {
                         result = "Stopping zumo";
                         callback(null, result);
-                    } else {
-                        callback(err, null);
                     }
                 });             
             }            
