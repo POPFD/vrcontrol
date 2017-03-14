@@ -1,6 +1,7 @@
 var SerialPort = require('serialport')
 
 const COM_PORT = '/dev/ttyACM0';
+const BAUD_RATE = 9600;
 
 const CHAR_FORWARD = 'W';
 const CHAR_BACKWARD = 'S';
@@ -8,14 +9,16 @@ const CHAR_LEFT = 'A';
 const CHAR_RIGHT = 'D';
 const CHAR_STOP = 'Q';
 
-var port = new SerialPort(COM_PORT, function(err) {
+var port = new SerialPort(COM_PORT, { baudRate: BAUD_RATE });
 
-  if (err) {
-    return console.log('Error: ', err.message);
-  } else {
-    return console.log('Zumo connected on: ' + COM_PORT);
-  }
+port.on('open', function() {
+  console.log('Zumo connected on: ' + COM_PORT);
 });
+
+port.on('error', function(err) {
+  console.log('Error: ', err.message);
+});
+
 
 module.exports.moveForward = function() {
   port.write(CHAR_FORWARD, function(err) {
