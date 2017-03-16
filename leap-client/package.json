@@ -19,6 +19,7 @@
   "homepage": "https://github.com/JackAllister/vrcontrol#readme",
   "dependencies": {
     "cylon": "^1.3.0",
-    "cylon-leapmotion": "^0.21.0"
+    "cylon-leapmotion": "^0.21.0",
+    "request": "^2.80.0"
   }
 }
