@@ -2,7 +2,7 @@ var request = require('request');
 var Cylon = require('cylon');
 
 /* URL to send post requests to */
-var serverURL = 'http://localhost:8001';
+var serverURL = 'http://192.168.43.244:8001';
 var serverRoute = '/api/move-zumo';
 
 function sendPOST(postData) {
