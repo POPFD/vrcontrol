@@ -8,7 +8,7 @@
 #define CHAR_STOP 'Q'
 
 #define NO_SPEED 0
-#define MAX_SPEED 250
+#define MAX_SPEED 200
 #define TURN_SPEED 185
 
 
