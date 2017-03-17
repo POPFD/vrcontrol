@@ -25,7 +25,7 @@
         <button id="zero" class="btn btn-lg btn-default hidden pull-right" onclick="javascript:zero()"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span></button>
       </div>
 
-      <img id="stream" class="stream--img" src="http://192.168.1.9:9001/?action=stream" class="img-responsive" alt="Zumo live stream">
+      <img id="stream" class="stream--img" src="http://127.0.0.1:9001/?action=stream" class="img-responsive" alt="Zumo live stream">
 
       <div class="stream--bottom-menu text-center">
         <button id="start" class="btn btn-lg btn-primary" onclick="javascript:start()">Start</button>
@@ -100,20 +100,20 @@
 
     function calcMovement(relativeHeading) {
       
-      var Direction = STOP;
+      var direction = STOP;
       // relativeHeading > 355 || relativeHeading < 5 = 10deg for head movement
       if( relativeHeading < 355 && relativeHeading > 5) {
-        if(relativeHeading>180) Direction = LEFT;
-        else Direction = RIGHT;
+        if(relativeHeading>180) direction = LEFT;
+        else direction = RIGHT;
       }
 
-      if (lastDirection != Direction)
+      if (lastDirection != direction)
       {
-        console.log(Direction);
+        console.log(direction);
 
         $.ajax('/api/move-zumo', {
           type: "POST",
-          data: {'direction': Direction},
+          data: {'direction': direction},
           statusCode: {
             200: function (response) {
                console.log(response);
@@ -123,7 +123,7 @@
 
       }
 
-      lastDirection = Direction;
+      lastDirection = direction;
     }
   
   </script>
