@@ -25,7 +25,7 @@ const server = app.listen(8001, function () {
     cmd.run('sudo mjpg_streamer -o "output_http.so -p 9001 -w ./mjpg-streamer/www" -i "input_raspicam.so -x 1280 -y 720 -fps 15"');
 
     console.log("Running camera stream on port: 9001");
-
+    
 });
 
 // Just in case for unit test mocking
