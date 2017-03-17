@@ -54,6 +54,7 @@
     function stop() {
       compassZero = undefined;
       relativeHeading = undefined;
+      sendMovement(STOP);
       $("#start").removeClass("hidden");
       $("#stop").addClass("hidden");
       $("#zero").addClass("hidden");
@@ -81,9 +82,7 @@
         updateDirection(dir);
 
       }, false);
-    } else {
-      document.getElementById("doEvent").innerHTML = "Not supported."
-    }   
+    }  
 
     function updateDirection( dir ) {
       compassdir = Math.round(dir);
@@ -107,6 +106,11 @@
         else direction = RIGHT;
       }
 
+      sendMovement(direction);
+    }
+
+    function sendMovement(direction) {
+
       if (lastDirection != direction)
       {
         console.log(direction);
@@ -121,9 +125,9 @@
           }
         });
 
+        lastDirection = direction;
       }
 
-      lastDirection = direction;
     }
   
   </script>

@@ -9,7 +9,7 @@
 
 #define NO_SPEED 0
 #define MAX_SPEED 300
-#define TURN_SPEED 150
+#define TURN_SPEED 225
 
 
 /* Module Variables */
