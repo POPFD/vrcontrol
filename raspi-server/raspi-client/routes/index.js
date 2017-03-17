@@ -9,7 +9,7 @@ module.exports = function (app, dir) {
     app.get('/stream', function (req, res) {
       var proxy = httpProxy.createProxyServer({});
 
-      proxy.web(req, res, { target: 'http://127.0.0.1:9001' });
+      proxy.web(req, res, { target: 'http://127.0.0.1:9001/?action=stream' });
     });
 
 };
