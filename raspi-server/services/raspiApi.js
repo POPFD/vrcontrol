@@ -6,7 +6,6 @@ module.exports = function (app) {
     // Defines endpoint for zumo arduino movement (api/move-zumo)
     app.post(`${baseUrl}/move-zumo`, function (req, res) {
         let direction = req.body.direction;
-
         // Call business and provide error handling (returns json response with status code)
         raspiBusiness.moveZumo(direction, function (err, result) {
             if (err) {
