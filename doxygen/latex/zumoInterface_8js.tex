@@ -1,0 +1,187 @@
+\hypertarget{zumoInterface_8js}{\section{raspi-\/server/business/zumo\+Interface.js File Reference}
+\label{zumoInterface_8js}\index{raspi-\/server/business/zumo\+Interface.\+js@{raspi-\/server/business/zumo\+Interface.\+js}}
+}
+
+
+Zumo Node\+J\+S interface.  
+
+
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{zumoInterface_8js_a80575723c0f64989c3b84820bf5440ec}{const {\bfseries C\+O\+M\+\_\+\+P\+O\+R\+T} = '/dev/tty\+A\+C\+M0'}\label{zumoInterface_8js_a80575723c0f64989c3b84820bf5440ec}
+
+\item 
+\hypertarget{zumoInterface_8js_aaf76bc20a3a640d1f6a8ae56b665c7af}{const {\bfseries B\+A\+U\+D\+\_\+\+R\+A\+T\+E} = 9600}\label{zumoInterface_8js_aaf76bc20a3a640d1f6a8ae56b665c7af}
+
+\item 
+\hypertarget{zumoInterface_8js_ac457b5cb333f10db7644600a814afae2}{const {\bfseries C\+H\+A\+R\+\_\+\+F\+O\+R\+W\+A\+R\+D} = 'W'}\label{zumoInterface_8js_ac457b5cb333f10db7644600a814afae2}
+
+\item 
+\hypertarget{zumoInterface_8js_a93cfd3834cce5083257a6ea6ca2d11b5}{const {\bfseries C\+H\+A\+R\+\_\+\+B\+A\+C\+K\+W\+A\+R\+D} = 'S'}\label{zumoInterface_8js_a93cfd3834cce5083257a6ea6ca2d11b5}
+
+\item 
+\hypertarget{zumoInterface_8js_a28644fba08bc3d3409de6abd8c9edc3b}{const {\bfseries C\+H\+A\+R\+\_\+\+L\+E\+F\+T} = 'A'}\label{zumoInterface_8js_a28644fba08bc3d3409de6abd8c9edc3b}
+
+\item 
+\hypertarget{zumoInterface_8js_a975cdaf14bfefafd9c7860115f38d786}{const {\bfseries C\+H\+A\+R\+\_\+\+R\+I\+G\+H\+T} = 'D'}\label{zumoInterface_8js_a975cdaf14bfefafd9c7860115f38d786}
+
+\item 
+\hypertarget{zumoInterface_8js_ab48a521e81f4d53a4fb8e21db7cb8fdc}{const {\bfseries C\+H\+A\+R\+\_\+\+S\+T\+O\+P} = 'Q'}\label{zumoInterface_8js_ab48a521e81f4d53a4fb8e21db7cb8fdc}
+
+\item 
+\hypertarget{zumoInterface_8js_a0e03a9c3f7688c06b666a4c624d788d7}{var {\bfseries Serial\+Port} = require('serialport')}\label{zumoInterface_8js_a0e03a9c3f7688c06b666a4c624d788d7}
+
+\item 
+\hypertarget{zumoInterface_8js_a8919360cd4b4bb6c42169b3735ca2a39}{var {\bfseries port} = new Serial\+Port(C\+O\+M\+\_\+\+P\+O\+R\+T, \{ baud\+Rate\+: B\+A\+U\+D\+\_\+\+R\+A\+T\+E \})}\label{zumoInterface_8js_a8919360cd4b4bb6c42169b3735ca2a39}
+
+\item 
+module exports \hyperlink{zumoInterface_8js_a3fe300852e568b4953770aad696ced65}{move\+Forward}
+\begin{DoxyCompactList}\small\item\em Function export for moving forward. Attempts to send forward command over serial. \end{DoxyCompactList}\item 
+module exports \hyperlink{zumoInterface_8js_ad940d9d909cbd2fd6c284f07642856ca}{move\+Backward}
+\begin{DoxyCompactList}\small\item\em Function export for moving backward. Attempts to send backward command over serial. \end{DoxyCompactList}\item 
+module exports \hyperlink{zumoInterface_8js_a049c5f304eb53b528cddba0a032a6420}{move\+Left}
+\begin{DoxyCompactList}\small\item\em Function export for moving left. Attempts to send left command over serial. \end{DoxyCompactList}\item 
+module exports \hyperlink{zumoInterface_8js_a8d3ef2708ebcee7692c30fe3bc3eb37c}{move\+Right}
+\begin{DoxyCompactList}\small\item\em Function export for moving right. Attempts to send right command over serial. \end{DoxyCompactList}\item 
+module exports \hyperlink{zumoInterface_8js_ac229bef2afac1b8172b04c80620591a0}{stop\+Movement}
+\begin{DoxyCompactList}\small\item\em Function export for stopping movement. Attempts to send stop command over serial. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Zumo Node\+J\+S interface. 
+
+\begin{DoxyAuthor}{Author}
+Jack Allister -\/ b3042098 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+14 Mar 2017 Uses serialport module to send data to the arduino. The data sent is movement commands for forward, backward, left, right \& stop. 
+\end{DoxyDate}
+
+
+\subsection{Variable Documentation}
+\hypertarget{zumoInterface_8js_ad940d9d909cbd2fd6c284f07642856ca}{\index{zumo\+Interface.\+js@{zumo\+Interface.\+js}!move\+Backward@{move\+Backward}}
+\index{move\+Backward@{move\+Backward}!zumo\+Interface.\+js@{zumo\+Interface.\+js}}
+\subsubsection[{move\+Backward}]{\setlength{\rightskip}{0pt plus 5cm}module exports move\+Backward}}\label{zumoInterface_8js_ad940d9d909cbd2fd6c284f07642856ca}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \textcolor{keyword}{function} (callback) \{
+    port.write(CHAR\_BACKWARD, \textcolor{keyword}{function} (err) \{
+        \textcolor{keywordflow}{if} (err) \{
+            var message = `Error moving zumo backwards: $\{err.message\}`;
+            callback(err);
+        \} \textcolor{keywordflow}{else} \{
+            callback(null);
+        \}
+    \});
+\}
+\end{DoxyCode}
+
+
+Function export for moving backward. Attempts to send backward command over serial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & -\/ Callback function to display send status. \\
+\hline
+\end{DoxyParams}
+\hypertarget{zumoInterface_8js_a3fe300852e568b4953770aad696ced65}{\index{zumo\+Interface.\+js@{zumo\+Interface.\+js}!move\+Forward@{move\+Forward}}
+\index{move\+Forward@{move\+Forward}!zumo\+Interface.\+js@{zumo\+Interface.\+js}}
+\subsubsection[{move\+Forward}]{\setlength{\rightskip}{0pt plus 5cm}module exports move\+Forward}}\label{zumoInterface_8js_a3fe300852e568b4953770aad696ced65}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \textcolor{keyword}{function} (callback) \{
+    port.write(CHAR\_FORWARD, \textcolor{keyword}{function}(err) \{
+        \textcolor{keywordflow}{if} (err) \{
+            var message = `Error moving zumo forwards: $\{err.message\}`;
+            callback(err);
+        \} \textcolor{keywordflow}{else} \{
+            callback(null);
+        \}
+    \});
+\}
+\end{DoxyCode}
+
+
+Function export for moving forward. Attempts to send forward command over serial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & -\/ Callback function to display send status. \\
+\hline
+\end{DoxyParams}
+\hypertarget{zumoInterface_8js_a049c5f304eb53b528cddba0a032a6420}{\index{zumo\+Interface.\+js@{zumo\+Interface.\+js}!move\+Left@{move\+Left}}
+\index{move\+Left@{move\+Left}!zumo\+Interface.\+js@{zumo\+Interface.\+js}}
+\subsubsection[{move\+Left}]{\setlength{\rightskip}{0pt plus 5cm}module exports move\+Left}}\label{zumoInterface_8js_a049c5f304eb53b528cddba0a032a6420}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \textcolor{keyword}{function} (callback) \{
+    port.write(CHAR\_LEFT, \textcolor{keyword}{function} (err) \{
+        \textcolor{keywordflow}{if} (err) \{
+            var message = `Error turning zumo to the left: $\{err.message\}`;
+            callback(err);
+        \} \textcolor{keywordflow}{else} \{
+            callback(null);
+        \}
+    \});
+\}
+\end{DoxyCode}
+
+
+Function export for moving left. Attempts to send left command over serial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & -\/ Callback function to display send status. \\
+\hline
+\end{DoxyParams}
+\hypertarget{zumoInterface_8js_a8d3ef2708ebcee7692c30fe3bc3eb37c}{\index{zumo\+Interface.\+js@{zumo\+Interface.\+js}!move\+Right@{move\+Right}}
+\index{move\+Right@{move\+Right}!zumo\+Interface.\+js@{zumo\+Interface.\+js}}
+\subsubsection[{move\+Right}]{\setlength{\rightskip}{0pt plus 5cm}module exports move\+Right}}\label{zumoInterface_8js_a8d3ef2708ebcee7692c30fe3bc3eb37c}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \textcolor{keyword}{function} (callback) \{
+    port.write(CHAR\_RIGHT, \textcolor{keyword}{function}(err) \{
+        \textcolor{keywordflow}{if} (err) \{
+            var message = `Error turning zumo to the right: $\{err.message\}`;
+            callback(err);
+        \} \textcolor{keywordflow}{else} \{
+            callback(null);
+        \}
+    \});
+\}
+\end{DoxyCode}
+
+
+Function export for moving right. Attempts to send right command over serial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & -\/ Callback function to display send status. \\
+\hline
+\end{DoxyParams}
+\hypertarget{zumoInterface_8js_ac229bef2afac1b8172b04c80620591a0}{\index{zumo\+Interface.\+js@{zumo\+Interface.\+js}!stop\+Movement@{stop\+Movement}}
+\index{stop\+Movement@{stop\+Movement}!zumo\+Interface.\+js@{zumo\+Interface.\+js}}
+\subsubsection[{stop\+Movement}]{\setlength{\rightskip}{0pt plus 5cm}module exports stop\+Movement}}\label{zumoInterface_8js_ac229bef2afac1b8172b04c80620591a0}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \textcolor{keyword}{function} (callback) \{
+    port.write(CHAR\_STOP, \textcolor{keyword}{function}(err) \{
+        \textcolor{keywordflow}{if} (err) \{
+            var message = `Error stopping the zumo: $\{err.message\}`;
+            callback(err);
+        \} \textcolor{keywordflow}{else} \{
+            callback(null);
+        \}
+    \});
+\}
+\end{DoxyCode}
+
+
+Function export for stopping movement. Attempts to send stop command over serial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & -\/ Callback function to display send status. \\
+\hline
+\end{DoxyParams}

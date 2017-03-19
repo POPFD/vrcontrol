@@ -1,0 +1,163 @@
+\hypertarget{client_8js}{\section{leap-\/client/client.js File Reference}
+\label{client_8js}\index{leap-\/client/client.\+js@{leap-\/client/client.\+js}}
+}
+
+
+Node client for parsing hand gestures from L\+E\+A\+P motion.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+function \hyperlink{client_8js_ad37065b6396f0c8d33be055d60dbd562}{send\+P\+O\+S\+T} (post\+Data)
+\begin{DoxyCompactList}\small\item\em Function for sending a P\+O\+S\+T request with our J\+S\+O\+N data to the Raspberry P\+I server. \end{DoxyCompactList}\item 
+function \hyperlink{client_8js_aadeba4f7d735ef6e57c45a317e7d0bd0}{calc\+Movement} (fingers)
+\begin{DoxyCompactList}\small\item\em Responsible calculating what gesture/movement is shown from the L\+E\+A\+P motion device. \end{DoxyCompactList}\item 
+\hypertarget{client_8js_a6cadb364973db90ba4a473dc8875f8f9}{Cylon {\bfseries robot} (\hyperlink{classnewRobot}{new\+Robot}).start()}\label{client_8js_a6cadb364973db90ba4a473dc8875f8f9}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{client_8js_ad9abb423164fcb98d6ad9333893e4682}{var {\bfseries request} = require('request')}\label{client_8js_ad9abb423164fcb98d6ad9333893e4682}
+
+\item 
+\hypertarget{client_8js_afb751ad0217e71095fc9ea96b77de907}{var {\bfseries Cylon} = require('cylon')}\label{client_8js_afb751ad0217e71095fc9ea96b77de907}
+
+\item 
+var {\bfseries server\+U\+R\+L}
+\item 
+var {\bfseries new\+Robot}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Node client for parsing hand gestures from L\+E\+A\+P motion. 
+
+\begin{DoxyAuthor}{Author}
+Jack Allister -\/ b3042098 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+25 Feb 2017 Sends a H\+T\+T\+P post to the Raspberry P\+I server, the commands are either move forward, backwards or stop. 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{client_8js_aadeba4f7d735ef6e57c45a317e7d0bd0}{\index{client.\+js@{client.\+js}!calc\+Movement@{calc\+Movement}}
+\index{calc\+Movement@{calc\+Movement}!client.\+js@{client.\+js}}
+\subsubsection[{calc\+Movement}]{\setlength{\rightskip}{0pt plus 5cm}function calc\+Movement (
+\begin{DoxyParamCaption}
+\item[{}]{fingers}
+\end{DoxyParamCaption}
+)}}\label{client_8js_aadeba4f7d735ef6e57c45a317e7d0bd0}
+
+
+Responsible calculating what gesture/movement is shown from the L\+E\+A\+P motion device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fingers} & -\/ Array of information for each finger from the L\+E\+A\+P. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+44                                \{
+45 
+46   var INDEX\_FINGER = 1;
+47   var MIDDLE\_FINGER = 2;
+48 
+49 
+50   var postData = \{direction: \textcolor{stringliteral}{'stop'}\}
+51 
+52   \textcolor{keywordflow}{if} ((fingers[INDEX\_FINGER].extended == \textcolor{keyword}{true}) &&
+53     (fingers[MIDDLE\_FINGER].extended == \textcolor{keyword}{true})) \{
+54     \textcolor{comment}{/* Signal to go forwards */}
+55     postData.direction = \textcolor{stringliteral}{'forward'};
+56   \}
+57   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((fingers[INDEX\_FINGER].extended == \textcolor{keyword}{true}) &&
+58     (fingers[MIDDLE\_FINGER].extended == \textcolor{keyword}{false})) \{
+59     \textcolor{comment}{/* Signal to go backwards */}
+60     postData.direction = \textcolor{stringliteral}{'backward'};
+61   \}
+62 
+63   \textcolor{keywordflow}{if} (\hyperlink{client_8js_aadeba4f7d735ef6e57c45a317e7d0bd0}{calcMovement}.lastDirection != postData.direction)
+64   \{
+65     console.log(postData);
+66     \hyperlink{client_8js_ad37065b6396f0c8d33be055d60dbd562}{sendPOST}(postData);
+67 
+68     \hyperlink{client_8js_aadeba4f7d735ef6e57c45a317e7d0bd0}{calcMovement}.lastDirection = postData.direction;
+69   \}
+70 \}
+\end{DoxyCode}
+\hypertarget{client_8js_ad37065b6396f0c8d33be055d60dbd562}{\index{client.\+js@{client.\+js}!send\+P\+O\+S\+T@{send\+P\+O\+S\+T}}
+\index{send\+P\+O\+S\+T@{send\+P\+O\+S\+T}!client.\+js@{client.\+js}}
+\subsubsection[{send\+P\+O\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}function send\+P\+O\+S\+T (
+\begin{DoxyParamCaption}
+\item[{}]{post\+Data}
+\end{DoxyParamCaption}
+)}}\label{client_8js_ad37065b6396f0c8d33be055d60dbd562}
+
+
+Function for sending a P\+O\+S\+T request with our J\+S\+O\+N data to the Raspberry P\+I server. 
+
+If there is no error and correct status code returned data is printed to console. 
+\begin{DoxyCode}
+25                             \{
+26   request.post(
+27     serverURL + serverRoute,
+28     \{ json: postData\},
+29     \textcolor{keyword}{function}(error, response, body) \{
+30 
+31       \textcolor{keywordflow}{if} (!error && response.statusCode == 200) \{
+32         console.log(body);
+33       \}
+34     \}
+35   )
+36 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\hypertarget{client_8js_ae4eaebdfc0ece737f8cf4fef47d032a8}{\index{client.\+js@{client.\+js}!new\+Robot@{new\+Robot}}
+\index{new\+Robot@{new\+Robot}!client.\+js@{client.\+js}}
+\subsubsection[{new\+Robot}]{\setlength{\rightskip}{0pt plus 5cm}var {\bf new\+Robot}}}\label{client_8js_ae4eaebdfc0ece737f8cf4fef47d032a8}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+  connections: \{
+    leapmotion: \{ adapter: \textcolor{stringliteral}{'leapmotion'} \}
+  \},
+
+  devices: \{
+    leapmotion: \{ driver: \textcolor{stringliteral}{'leapmotion'} \}
+  \},
+
+  
+  work: \textcolor{keyword}{function} (my) \{
+
+    
+    my.leapmotion.on(\textcolor{stringliteral}{'hand'}, \textcolor{keyword}{function} (hand) \{
+      var fingersExtended = 0;
+
+      \textcolor{keywordflow}{for} (var i = 0; i < 5; i++) \{
+        
+
+        \textcolor{keywordflow}{if} (hand.fingers[i].extended == \textcolor{keyword}{true})
+          fingersExtended++;
+      \}
+
+      \hyperlink{client_8js_aadeba4f7d735ef6e57c45a317e7d0bd0}{calcMovement}(hand.fingers);
+      
+    \});
+
+  \}
+\}
+\end{DoxyCode}
+\hypertarget{client_8js_a09a8fdd05f6dcc691c8a10b3a565e24f}{\index{client.\+js@{client.\+js}!server\+U\+R\+L@{server\+U\+R\+L}}
+\index{server\+U\+R\+L@{server\+U\+R\+L}!client.\+js@{client.\+js}}
+\subsubsection[{server\+U\+R\+L}]{\setlength{\rightskip}{0pt plus 5cm}var server\+U\+R\+L}}\label{client_8js_a09a8fdd05f6dcc691c8a10b3a565e24f}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \textcolor{stringliteral}{'http:}
+\textcolor{stringliteral}{var serverRoute = '}/api/move-zumo\textcolor{stringliteral}{'}
+\end{DoxyCode}

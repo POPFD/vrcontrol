@@ -1,3 +1,13 @@
+/**
+ * @file arduino-sketch.ino
+ * @author Jack Allister - b3042098
+ * @date 14 March 2017
+ * @brief Arduino motor controller for ZumoMotors
+ *
+ * Waits for serial commands to set the motors to go
+ * in a certain direction.
+ */
+
 #include <ZumoMotors.h>
 
 /* Module Constants */
@@ -17,6 +27,12 @@ ZumoMotors motors;
 
 /* Module Code */
 
+/**
+ * @brief Runs once at boot of arduino.
+ *
+ * Responsible for setting up the peripherals,
+ * Initialises serial port at set BAUD rate as well as setting motors to 0.
+ */
 void setup()
 {
   /* Initialise serial for receiving comms from Raspberry Pi */
@@ -25,6 +41,13 @@ void setup()
   motors.setSpeeds(NO_SPEED, NO_SPEED);
 }
 
+
+/**
+ * @brief System loop that is ran continuously.
+ *
+ * Loop keeps parsing serial, until one of the specific commands are sent
+ * via hardware serial. Once set, commands move a motors in a set direction.
+ */
 void loop()
 {
 

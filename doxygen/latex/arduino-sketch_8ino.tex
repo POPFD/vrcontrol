@@ -1,0 +1,147 @@
+\hypertarget{arduino-sketch_8ino}{\section{arduino-\/sketch/arduino-\/sketch.ino File Reference}
+\label{arduino-sketch_8ino}\index{arduino-\/sketch/arduino-\/sketch.\+ino@{arduino-\/sketch/arduino-\/sketch.\+ino}}
+}
+
+
+Arduino motor controller for Zumo\+Motors.  
+
+
+{\ttfamily \#include $<$Zumo\+Motors.\+h$>$}\\*
+Include dependency graph for arduino-\/sketch.ino\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{arduino-sketch_8ino__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{arduino-sketch_8ino_a764dbd349d8621accd792ee5210a3f74}{\#define {\bfseries C\+H\+A\+R\+\_\+\+F\+O\+R\+W\+A\+R\+D}~'W'}\label{arduino-sketch_8ino_a764dbd349d8621accd792ee5210a3f74}
+
+\item 
+\hypertarget{arduino-sketch_8ino_a1681b01a2698687a9b6aedd45b796f40}{\#define {\bfseries C\+H\+A\+R\+\_\+\+B\+A\+C\+K\+W\+A\+R\+D}~'S'}\label{arduino-sketch_8ino_a1681b01a2698687a9b6aedd45b796f40}
+
+\item 
+\hypertarget{arduino-sketch_8ino_aa05ecc497d01a93be5dd62ddaee54a75}{\#define {\bfseries C\+H\+A\+R\+\_\+\+L\+E\+F\+T}~'A'}\label{arduino-sketch_8ino_aa05ecc497d01a93be5dd62ddaee54a75}
+
+\item 
+\hypertarget{arduino-sketch_8ino_a94f7d75840f1acbd2c2acd01fc115d88}{\#define {\bfseries C\+H\+A\+R\+\_\+\+R\+I\+G\+H\+T}~'D'}\label{arduino-sketch_8ino_a94f7d75840f1acbd2c2acd01fc115d88}
+
+\item 
+\hypertarget{arduino-sketch_8ino_a245db460299318b2a2b61c2f884c1d19}{\#define {\bfseries C\+H\+A\+R\+\_\+\+S\+T\+O\+P}~'Q'}\label{arduino-sketch_8ino_a245db460299318b2a2b61c2f884c1d19}
+
+\item 
+\hypertarget{arduino-sketch_8ino_ae84e9944a7983ebfabc5ad16c9fbc04d}{\#define {\bfseries N\+O\+\_\+\+S\+P\+E\+E\+D}~0}\label{arduino-sketch_8ino_ae84e9944a7983ebfabc5ad16c9fbc04d}
+
+\item 
+\hypertarget{arduino-sketch_8ino_ac2cd96d53dd3ba6407db6766c3d92b26}{\#define {\bfseries M\+A\+X\+\_\+\+S\+P\+E\+E\+D}~200}\label{arduino-sketch_8ino_ac2cd96d53dd3ba6407db6766c3d92b26}
+
+\item 
+\hypertarget{arduino-sketch_8ino_afa9188776d909e94ead6cf6ffbbdd1e8}{\#define {\bfseries T\+U\+R\+N\+\_\+\+S\+P\+E\+E\+D}~185}\label{arduino-sketch_8ino_afa9188776d909e94ead6cf6ffbbdd1e8}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{arduino-sketch_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup} ()
+\begin{DoxyCompactList}\small\item\em Runs once at boot of arduino. \end{DoxyCompactList}\item 
+void \hyperlink{arduino-sketch_8ino_afe461d27b9c48d5921c00d521181f12f}{loop} ()
+\begin{DoxyCompactList}\small\item\em System loop that is ran continuously. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{arduino-sketch_8ino_a107e8fa5802407f91589286783cb7c5d}{Zumo\+Motors {\bfseries motors}}\label{arduino-sketch_8ino_a107e8fa5802407f91589286783cb7c5d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Arduino motor controller for Zumo\+Motors. 
+
+\begin{DoxyAuthor}{Author}
+Jack Allister -\/ b3042098 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+14 March 2017 Waits for serial commands to set the motors to go in a certain direction. 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{arduino-sketch_8ino_afe461d27b9c48d5921c00d521181f12f}{\index{arduino-\/sketch.\+ino@{arduino-\/sketch.\+ino}!loop@{loop}}
+\index{loop@{loop}!arduino-\/sketch.\+ino@{arduino-\/sketch.\+ino}}
+\subsubsection[{loop}]{\setlength{\rightskip}{0pt plus 5cm}void loop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{arduino-sketch_8ino_afe461d27b9c48d5921c00d521181f12f}
+
+
+System loop that is ran continuously. 
+
+Loop keeps parsing serial, until one of the specific commands are sent via hardware serial. Once set, commands move a motors in a set direction. 
+\begin{DoxyCode}
+52 \{
+53 
+54   \textcolor{comment}{/* Wait till data available on serial */}
+55   \textcolor{keywordflow}{if} (Serial.available() != 0)
+56   \{
+57     \textcolor{keywordtype}{char} recvByte = toupper(Serial.read());
+58 
+59     \textcolor{comment}{/* Parse movement command */}
+60     \textcolor{keywordflow}{switch} (recvByte)
+61     \{
+62       \textcolor{keywordflow}{case} CHAR\_FORWARD:
+63       \{
+64         motors.setSpeeds(MAX\_SPEED, MAX\_SPEED);
+65         \textcolor{keywordflow}{break};
+66       \}
+67 
+68       \textcolor{keywordflow}{case} CHAR\_BACKWARD:
+69       \{
+70         motors.setSpeeds(-MAX\_SPEED, -MAX\_SPEED);
+71         \textcolor{keywordflow}{break};
+72       \}
+73 
+74       \textcolor{keywordflow}{case} CHAR\_LEFT:
+75       \{
+76         motors.setSpeeds(-TURN\_SPEED, TURN\_SPEED);
+77         \textcolor{keywordflow}{break};
+78       \}
+79 
+80       \textcolor{keywordflow}{case} CHAR\_RIGHT:
+81       \{
+82         motors.setSpeeds(TURN\_SPEED, -TURN\_SPEED);
+83         \textcolor{keywordflow}{break};
+84       \}
+85 
+86       \textcolor{keywordflow}{case} CHAR\_STOP:
+87       \{
+88         motors.setSpeeds(NO\_SPEED, NO\_SPEED);
+89         \textcolor{keywordflow}{break};
+90       \}
+91     \}
+92 
+93   \}
+94 \}
+\end{DoxyCode}
+\hypertarget{arduino-sketch_8ino_a4fc01d736fe50cf5b977f755b675f11d}{\index{arduino-\/sketch.\+ino@{arduino-\/sketch.\+ino}!setup@{setup}}
+\index{setup@{setup}!arduino-\/sketch.\+ino@{arduino-\/sketch.\+ino}}
+\subsubsection[{setup}]{\setlength{\rightskip}{0pt plus 5cm}void setup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{arduino-sketch_8ino_a4fc01d736fe50cf5b977f755b675f11d}
+
+
+Runs once at boot of arduino. 
+
+Responsible for setting up the peripherals, Initialises serial port at set B\+A\+U\+D rate as well as setting motors to 0. 
+\begin{DoxyCode}
+37 \{
+38   \textcolor{comment}{/* Initialise serial for receiving comms from Raspberry Pi */}
+39   Serial.begin(9600);
+40 
+41   motors.setSpeeds(NO\_SPEED, NO\_SPEED);
+42 \}
+\end{DoxyCode}

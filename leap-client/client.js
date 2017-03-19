@@ -1,3 +1,12 @@
+/**
+ * @file client.js
+ * @author Jack Allister - b3042098
+ * @date 25 Feb 2017
+ * @brief Node client for parsing hand gestures from LEAP motion.
+ *
+ * Sends a HTTP post to the Raspberry PI server, the commands are either
+ * move forward, backwards or stop.
+ */
 var request = require('request');
 var Cylon = require('cylon');
 
@@ -5,6 +14,14 @@ var Cylon = require('cylon');
 var serverURL = 'http://192.168.43.244:8001';
 var serverRoute = '/api/move-zumo';
 
+/**
+ * @brief Function for sending a POST request with our JSON data
+ * to the Raspberry PI server.
+ *
+ * If there is no error and correct status code returned data
+ * is printed to console.
+ *
+ */
 function sendPOST(postData) {
   request.post(
     serverURL + serverRoute,
@@ -18,6 +35,12 @@ function sendPOST(postData) {
   )
 }
 
+/**
+ * @brief Responsible calculating what gesture/movement is shown
+ * from the LEAP motion device.
+ *
+ * @param fingers - Array of information for each finger from the LEAP.
+ */
 function calcMovement(fingers) {
 
   var INDEX_FINGER = 1;
@@ -46,8 +69,13 @@ function calcMovement(fingers) {
   }
 }
 
-
-Cylon.robot({
+/**
+ * @class newRobot
+ * @brief Class for holding our robot structure for cylon.
+ * Includes the connection, device & work function.
+ *
+ */
+var newRobot = {
   connections: {
     leapmotion: { adapter: 'leapmotion' }
   },
@@ -56,8 +84,20 @@ Cylon.robot({
     leapmotion: { driver: 'leapmotion' }
   },
 
+  /**
+   * @function newRobot.work
+   * @brief Function declaration for cylon robot 'work' code.
+   *
+   * @param my - Instance of the robot class
+   */
   work: function (my) {
 
+    /**
+     * @function newRobot.work.onHand
+     * @brief Callback for when a hand is detected via the LEAP motion.
+     *
+     * @param hand - Object that hold information relating found hand.
+     */
     my.leapmotion.on('hand', function (hand) {
       var fingersExtended = 0;
 
@@ -73,4 +113,7 @@ Cylon.robot({
     });
 
   }
-}).start();
+};
+
+/* Start our new Robot */
+Cylon.robot(newRobot).start();

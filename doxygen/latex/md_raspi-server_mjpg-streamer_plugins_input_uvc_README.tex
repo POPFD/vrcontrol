@@ -1,0 +1,23 @@
+This plugin provides J\+P\+E\+G data from V4\+L/\+V4\+L2 compatible webcams.
+
+\section*{Usage }
+
+\begin{DoxyVerb}mjpg_streamer -i 'input_uvc.so [options]'
+\end{DoxyVerb}
+
+
+\subsection*{``` }
+
+\subsection*{Help for input plugin..\+: U\+V\+C webcam grabber }
+
+The following parameters can be passed to this plugin\+:
+
+\mbox{[}-\/d $\vert$ --device \mbox{]}.......\+: video device to open (your camera) \mbox{[}-\/r $\vert$ --resolution \mbox{]}...\+: the resolution of the video device, can be one of the following strings\+: Q\+S\+I\+F Q\+C\+I\+F C\+G\+A Q\+V\+G\+A C\+I\+F V\+G\+A S\+V\+G\+A X\+G\+A S\+X\+G\+A or a custom value like the following example\+: 640x480 \mbox{[}-\/f $\vert$ --fps \mbox{]}..........\+: frames per second (activates Y\+U\+Y\+V format, disables M\+J\+P\+E\+G) \mbox{[}-\/m $\vert$ --minimum\+\_\+size \mbox{]}.\+: drop frames smaller then this limit, useful if the webcam produces small-\/sized garbage frames may happen under low light conditions \mbox{[}-\/e $\vert$ --every\+\_\+frame \mbox{]}..\+: drop all frames except numbered \mbox{[}-\/n $\vert$ --no\+\_\+dynctrl \mbox{]}...\+: do not initalize dynctrls of Linux-\/\+U\+V\+C driver \mbox{[}-\/l $\vert$ --led \mbox{]}..........\+: switch the L\+E\+D \char`\"{}on\char`\"{}, \char`\"{}off\char`\"{}, let it \char`\"{}blink\char`\"{} or leave \subsection*{it up to the driver using the value \char`\"{}auto\char`\"{} }
+
+\subsection*{\mbox{[}-\/t $\vert$ --tvnorm \mbox{]} ......\+: set T\+V-\/\+Norm pal, ntsc or secam }
+
+Optional parameters (may not be supported by all cameras)\+:
+
+\mbox{[}-\/br \mbox{]}.................\+: Set image brightness (auto or integer) \mbox{[}-\/co \mbox{]}.................\+: Set image contrast (integer) \mbox{[}-\/sh \mbox{]}.................\+: Set image sharpness (integer) \mbox{[}-\/sa \mbox{]}.................\+: Set image saturation (integer) \mbox{[}-\/cb \mbox{]}.................\+: Set color balance (auto or integer) \mbox{[}-\/wb \mbox{]}.................\+: Set white balance (auto or integer) \mbox{[}-\/ex \mbox{]}.................\+: Set exposure (auto, shutter-\/priority, aperature-\/priority, or integer) \mbox{[}-\/bk \mbox{]}.................\+: Set backlight compensation (integer) \mbox{[}-\/rot \mbox{]}................\+: Set image rotation (0-\/359) \mbox{[}-\/hf \mbox{]}.................\+: Set horizontal flip (true/false) \mbox{[}-\/vf \mbox{]}.................\+: Set vertical flip (true/false) \mbox{[}-\/pl \mbox{]}.................\+: Set power line filter (disabled, 50hz, 60hz, auto) \mbox{[}-\/gain \mbox{]}...............\+: Set gain (auto or integer) \subsection*{\mbox{[}-\/cagc \mbox{]}...............\+: Set chroma gain control (auto or integer) }
+
+``` 
