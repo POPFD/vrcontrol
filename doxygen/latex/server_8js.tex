@@ -1,0 +1,83 @@
+\hypertarget{server_8js}{\section{raspi-\/server/server.js File Reference}
+\label{server_8js}\index{raspi-\/server/server.\+js@{raspi-\/server/server.\+js}}
+}
+
+
+Main code for our Node\+J\+S Raspberry P\+I server.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{server_8js_a37c46a0790b329a7a8dbd57b8f8b051a}{app {\bfseries use} (body\+Parser.\+json(\{limit\+:\char`\"{}50mb\char`\"{}\}))}\label{server_8js_a37c46a0790b329a7a8dbd57b8f8b051a}
+
+\item 
+\hypertarget{server_8js_a2fe88627dc7d9a19c8c5b47c5385c5db}{app {\bfseries use} (body\+Parser.\+urlencoded(\{extended\+:true, limit\+:\char`\"{}50mb\char`\"{}\}))}\label{server_8js_a2fe88627dc7d9a19c8c5b47c5385c5db}
+
+\item 
+\hypertarget{server_8js_ae8dafba32280b70b0af388924c53003c}{app {\bfseries use} (express.\+static(\+\_\+\+\_\+dirname+ '/\hyperlink{raspiBusiness_8js_a6c115c8d969183e980399ff23528aded}{raspi}-\/client'))}\label{server_8js_ae8dafba32280b70b0af388924c53003c}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{server_8js_a15df2c6f5711aa2794537f5bfe5f5287}{let {\bfseries express} = require(\char`\"{}express\char`\"{})}\label{server_8js_a15df2c6f5711aa2794537f5bfe5f5287}
+
+\item 
+\hypertarget{server_8js_a98dc47c7587daa9eaaaa00b5daf1b791}{let {\bfseries body\+Parser} = require(\char`\"{}body-\/parser\char`\"{})}\label{server_8js_a98dc47c7587daa9eaaaa00b5daf1b791}
+
+\item 
+\hypertarget{server_8js_a61cd714f583f5ea8c02710a85ef32b9c}{const {\bfseries app} = express()}\label{server_8js_a61cd714f583f5ea8c02710a85ef32b9c}
+
+\item 
+\hypertarget{server_8js_a1fdc7709faf62dce60620fb3f9d3453c}{const {\bfseries path} = require('path')}\label{server_8js_a1fdc7709faf62dce60620fb3f9d3453c}
+
+\item 
+\hypertarget{server_8js_a616a2b09d06060ace92c00f502c487b9}{const {\bfseries index\+Route} = require(\char`\"{}./raspi-\/client/routes/index\char`\"{})}\label{server_8js_a616a2b09d06060ace92c00f502c487b9}
+
+\item 
+\hypertarget{server_8js_a7abc0eb47456be060c4f20d6555e6066}{const {\bfseries cmd} = require(\char`\"{}node-\/cmd\char`\"{})}\label{server_8js_a7abc0eb47456be060c4f20d6555e6066}
+
+\item 
+\hypertarget{server_8js_ae872217e7a6a99a9333d9302b00ca36d}{const {\bfseries index} = require(\char`\"{}./raspi-\/client/routes/index\char`\"{})(app, \+\_\+\+\_\+dirname)}\label{server_8js_ae872217e7a6a99a9333d9302b00ca36d}
+
+\item 
+\hypertarget{server_8js_a2d08aa40cc3e715e396adb9c6fd5f63e}{const {\bfseries raspi\+Service} = require(\char`\"{}./services/raspi\+Api\char`\"{})(app)}\label{server_8js_a2d08aa40cc3e715e396adb9c6fd5f63e}
+
+\item 
+const {\bfseries server}
+\item 
+\hypertarget{server_8js_aa4072ba4b6b56b0fb6f4801f17ab2b34}{module {\bfseries exports} = \hyperlink{classserver}{server}}\label{server_8js_aa4072ba4b6b56b0fb6f4801f17ab2b34}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Main code for our Node\+J\+S Raspberry P\+I server. 
+
+\begin{DoxyAuthor}{Author}
+Damon Jones 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+27 Feb 2017 Responsible for initialising our express server up. 
+\end{DoxyDate}
+
+
+\subsection{Variable Documentation}
+\hypertarget{server_8js_a62ff6c55002c9217b0c1c94e9c7f6857}{\index{server.\+js@{server.\+js}!server@{server}}
+\index{server@{server}!server.\+js@{server.\+js}}
+\subsubsection[{server}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf server}}}\label{server_8js_a62ff6c55002c9217b0c1c94e9c7f6857}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= app.listen(8001, \textcolor{keyword}{function} () \{
+    var port = \hyperlink{classserver}{server}.address().port;
+
+    console.log(\textcolor{stringliteral}{"Raspi Server started on port: "} + port);
+
+    cmd.run(\textcolor{stringliteral}{'sudo mjpg\_streamer -o "output\_http.so -p 9001 -w ./mjpg-streamer/www" -i "input\_raspicam.so -x
+       1280 -y 720 -fps 15"'});
+
+    console.log(\textcolor{stringliteral}{"Running camera stream on port: 9001"});
+
+\})
+\end{DoxyCode}

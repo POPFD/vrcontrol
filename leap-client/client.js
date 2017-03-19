@@ -70,11 +70,12 @@ function calcMovement(fingers) {
 }
 
 /**
- * @brief Robot interface for LEAP motion using cylon.
- * This defines a new robot, initialises it then runs the code.
+ * @class newRobot
+ * @brief Class for holding our robot structure for cylon.
+ * Includes the connection, device & work function.
  *
  */
-Cylon.robot({
+var newRobot = {
   connections: {
     leapmotion: { adapter: 'leapmotion' }
   },
@@ -84,6 +85,7 @@ Cylon.robot({
   },
 
   /**
+   * @function newRobot.work
    * @brief Function declaration for cylon robot 'work' code.
    *
    * @param my - Instance of the robot class
@@ -91,6 +93,7 @@ Cylon.robot({
   work: function (my) {
 
     /**
+     * @function newRobot.work.onHand
      * @brief Callback for when a hand is detected via the LEAP motion.
      *
      * @param hand - Object that hold information relating found hand.
@@ -110,4 +113,7 @@ Cylon.robot({
     });
 
   }
-}).start();
+};
+
+/* Start our new Robot */
+Cylon.robot(newRobot).start();

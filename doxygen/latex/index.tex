@@ -1,0 +1,60 @@
+V\+R\+Control of Rapiro Robot using Node\+J\+S, Leap etc.\+fil 
+
+
+
+\subsection*{Connecting to Rapiro-\/\+Pi via V\+N\+C}
+
+
+\begin{DoxyEnumerate}
+\item Download V\+N\+C Viewer from \href{https://www.realvnc.com/download/viewer/}{\tt https\+://www.\+realvnc.\+com/download/viewer/}
+\item Click File -\/$>$ New Connection
+\item Set V\+N\+C Server to {\ttfamily rapiro-\/pi.\+ddns.\+net\+:5900}
+\item Set Name to {\ttfamily rapiro-\/pi-\/admin}
+\item Click O\+K then double click on the newly created connection
+\item Set Username to {\ttfamily admin}
+\item Set Password to {\ttfamily V\+Rcontrol17}
+\item Tick remember password
+\item Click O\+K
+\end{DoxyEnumerate}
+
+\subsection*{Connecting to Rapiro-\/\+Pi via S\+S\+H}
+
+
+\begin{DoxyEnumerate}
+\item Open your preferred S\+S\+H Client Putty etc.
+\item Set host to {\ttfamily rapiro-\/pi.\+ddns.\+net}
+\item Set Port to {\ttfamily 22}
+\item Username is {\ttfamily admin}
+\item Password is {\ttfamily V\+Rcontrol17}
+\end{DoxyEnumerate}
+
+\subsection*{Connecting to Rapiro-\/\+Pi via F\+T\+P (Filezilla)}
+
+
+\begin{DoxyEnumerate}
+\item Download Filezilla from \href{https://filezilla-project.org/download.php?type=client}{\tt https\+://filezilla-\/project.\+org/download.\+php?type=client}
+\item Click File -\/$>$ Site Manager
+\item Click New Site and name {\ttfamily rapiro-\/pi-\/admin}
+\item Set host to {\ttfamily rapiro-\/pi.\+ddns.\+net}
+\item Set Port to {\ttfamily 22}
+\item Set Protocol to {\ttfamily S\+F\+T\+P -\/ S\+S\+H File Transfer Protocol}
+\item Set Logon Type to {\ttfamily Normal}
+\item Set User to {\ttfamily admin}
+\item Set Password to {\ttfamily V\+Rcontrol17}
+\item Click connect
+\end{DoxyEnumerate}
+
+The connection will be saved and can be accessed again from Open Site Manager tab
+
+\subsection*{Accessing Visual Studio Code in Rapiro-\/\+Pi}
+
+Check to see if an instance is already open by hitting alt + tab or check the taskbar at the top (known bug sometimes disappears so use alt + tab or equivalent to O\+S you are on)
+
+
+\begin{DoxyEnumerate}
+\item If an instance is not running open the terminal
+\item Type {\ttfamily cd vscode} then hit enter
+\item Type {\ttfamily ./scripts/code.sh} then hit enter (be patient takes a while to fully load U\+I)
+\end{DoxyEnumerate}
+
+N\+O\+T\+E\+: The terminal command {\ttfamily ./scripts/code.sh} is what runs V\+S code so if you need to make any commands in terminal open a new terminal instance. Be careful not to accidentally close the terminal running V\+S code or data could be lost (V\+S code autosave feature is turned on but it is not a guarantee to prevent data loss) 

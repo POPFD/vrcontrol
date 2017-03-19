@@ -16,24 +16,32 @@ const CHAR_LEFT = 'A';
 const CHAR_RIGHT = 'D';
 const CHAR_STOP = 'Q';
 
-var SerialPort = require('serialport')
+var SerialPort = require('serialport');
 var port = new SerialPort(COM_PORT, { baudRate: BAUD_RATE });
 
-/**
- * @brief On serial port open success, prints to console.
- *
- */
-port.on('open', function() {
-    console.log('Zumo connected on: ' + COM_PORT);
-});
 
-/**
- * @brief On serial port error, print error message to console.
- *
- */
-port.on('error', function(err) {
+port.on('open',
+  /**
+   * @var port.onOpen
+   * @brief On serial port open success, prints to console.
+   *
+   */
+  function() {
+    console.log('Zumo connected on: ' + COM_PORT);
+  }
+);
+
+
+port.on('error',
+  /**
+   * @var port.onError
+   * @brief On serial port error, print error message to console.
+   *
+   */
+  function(err) {
     console.log('Error: ', err.message);
-});
+  }
+);
 
 /**
  * @brief Function export for moving forward.

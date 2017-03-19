@@ -18,7 +18,7 @@
     const LEFT = "left";
     const RIGHT = "right";
     const STOP = "stop";
-    const INVALID_COMMAND = "Command not recognised available commands are: 'forward', 'backward', 'left', 'right', 'stop'."
+    const INVALID_COMMAND = "Command not recognised available commands are: 'forward', 'backward', 'left', 'right', 'stop'.";
     const NO_PARAMETER = "Direction parameter was not supplied";
 
     /**

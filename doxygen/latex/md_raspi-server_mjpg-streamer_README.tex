@@ -1,0 +1,38 @@
+Currently no issues are known, but since this software is quite young and not used widely it may cause problems. You must really know what you are doing, if you use this software. If you want to use the software you are obliged to check if the sourcecode does what you expect it to do and take the risk yourself to use it.
+
+\section*{Usage }
+
+When launching mjpg-\/streamer, you specify one or more input plugins and an output plugin. For example, to stream a V4\+L compatible webcam via an H\+T\+T\+P server (the most common use case), you can do something like this\+: \begin{DoxyVerb}mjpg_streamer -i input_uvc.so -o output_http.so
+\end{DoxyVerb}
+
+
+Each plugin supports various options, you can view the plugin's options via its {\ttfamily -\/-\/help} option\+: \begin{DoxyVerb}mjpg_streamer -i 'input_uvc.so --help'
+\end{DoxyVerb}
+
+
+More examples can be found in the start.\+sh bash script.
+
+\section*{Plugin documentation }
+
+Input plugins\+:
+
+
+\begin{DoxyItemize}
+\item input\+\_\+file
+\item input\+\_\+http
+\item input\+\_\+opencv (documentation)
+\item input\+\_\+ptp2
+\item input\+\_\+raspicam (documentation)
+\item input\+\_\+uvc (documentation)
+\end{DoxyItemize}
+
+Output plugins\+:
+
+
+\begin{DoxyItemize}
+\item output\+\_\+file
+\item output\+\_\+http (documentation)
+\item output\+\_\+rtsp
+\item output\+\_\+udp
+\item output\+\_\+viewer (documentation) 
+\end{DoxyItemize}

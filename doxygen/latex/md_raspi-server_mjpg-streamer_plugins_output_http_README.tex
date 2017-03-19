@@ -1,0 +1,52 @@
+This plugin streams J\+P\+E\+G data from input plugins via H\+T\+T\+P.
+
+\section*{Usage }
+
+\begin{DoxyVerb}mjpg_streamer [input plugin options] -o 'output_http.so [options]'
+\end{DoxyVerb}
+
+
+\subsection*{``` }
+
+The following parameters can be passed to this plugin\+:
+
+\mbox{[}-\/w $\vert$ --www \mbox{]}...........\+: folder that contains webpages in flat hierarchy (no subfolders) \mbox{[}-\/p $\vert$ --port \mbox{]}..........\+: T\+C\+P port for this H\+T\+T\+P server \mbox{[}-\/c $\vert$ --credentials \mbox{]}...\+: ask for \char`\"{}username\+:password\char`\"{} on connect \subsection*{\mbox{[}-\/n $\vert$ --nocommands \mbox{]}....\+: disable execution of commands }
+
+```
+
+\subsection*{Browser/\+V\+L\+C }
+
+To view the stream use V\+L\+C or Firefox/\+Chrome and open the U\+R\+L\+: \begin{DoxyVerb}http://127.0.0.1:8080/?action=stream
+\end{DoxyVerb}
+
+
+If there are multiple input plugins, you can access each stream individually\+: \begin{DoxyVerb}http://127.0.0.1:8080/?action=stream_0
+http://127.0.0.1:8080/?action=stream_1
+\end{DoxyVerb}
+
+
+To do the same as the G\+E\+T request above using N\+S\+U\+R\+L\+Session in Objective-\/\+C, a P\+O\+S\+T request seems to work\+: \begin{DoxyVerb}POST http://127.0.0.1:8080/stream 
+\end{DoxyVerb}
+
+
+To view a single J\+P\+E\+G just open this U\+R\+L\+: \begin{DoxyVerb}http://127.0.0.1:8080/?action=snapshot
+\end{DoxyVerb}
+
+
+\subsection*{mplayer }
+
+To play the H\+T\+T\+P M-\/\+J\+P\+E\+G stream with mplayer\+: \begin{DoxyVerb}# mplayer -fps 30 -demuxer lavf "http://127.0.0.1:8080/?action=stream&ignored.mjpg"
+\end{DoxyVerb}
+
+
+It might be necessary to configure mplayer to prefer I\+Pv4 instead of I\+Pv6\+: \begin{DoxyVerb}# vi ~./mplayer/config
+add or change the option: prefer-ipv4=yes
+\end{DoxyVerb}
+
+
+\section*{Notes }
+
+If you would like to replace a Webcam\+X\+P based system with an mjpg-\/streamer based you may use the W\+X\+P\+\_\+\+C\+O\+M\+P\+A\+T argument to cmake. If you compile with this argument the mjpg stream will be available as cam\+\_\+1.\+mjpg and the still jpg snapshot as cam\+\_\+1.\+jpg. \begin{DoxyVerb}# mkdir _build
+# cd _build && cmake -DWXP_COMPAT=ON ..
+# make\end{DoxyVerb}
+ 

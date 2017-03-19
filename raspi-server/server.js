@@ -25,7 +25,11 @@ const index = require("./raspi-client/routes/index")(app, __dirname);
 // Add service endpoints to server (can be found in services folder)
 const raspiService = require("./services/raspiApi")(app);
 
-// Set up server
+/**
+ * @class server
+ * @brief Server objcet started on port 8001.
+ *
+ */
 const server = app.listen(8001, function () {
     var port = server.address().port;
 

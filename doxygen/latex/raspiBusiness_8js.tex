@@ -1,0 +1,79 @@
+\hypertarget{raspiBusiness_8js}{\section{raspi-\/server/business/raspi\+Business.js File Reference}
+\label{raspiBusiness_8js}\index{raspi-\/server/business/raspi\+Business.\+js@{raspi-\/server/business/raspi\+Business.\+js}}
+}
+
+
+Module for parsing Zumo movement commands received via H\+T\+T\+P requests.  
+
+
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+function \hyperlink{raspiBusiness_8js_a6c115c8d969183e980399ff23528aded}{raspi}
+\begin{DoxyCompactList}\small\item\em Responsible for parsing direction commands. Interacts with the zumo interface module to move the robot. \end{DoxyCompactList}\item 
+\hypertarget{raspiBusiness_8js_a705041204779473bdd2cd7d8fcca585f}{const {\bfseries F\+O\+R\+W\+A\+R\+D} = \char`\"{}forward\char`\"{}}\label{raspiBusiness_8js_a705041204779473bdd2cd7d8fcca585f}
+
+\item 
+\hypertarget{raspiBusiness_8js_a501246aa9d13de2219ea3a43d11285e8}{const {\bfseries B\+A\+C\+K\+W\+A\+R\+D} = \char`\"{}backward\char`\"{}}\label{raspiBusiness_8js_a501246aa9d13de2219ea3a43d11285e8}
+
+\item 
+\hypertarget{raspiBusiness_8js_ac01fa1c10cbd04610e4c4a0b39e5e5b0}{const {\bfseries L\+E\+F\+T} = \char`\"{}left\char`\"{}}\label{raspiBusiness_8js_ac01fa1c10cbd04610e4c4a0b39e5e5b0}
+
+\item 
+\hypertarget{raspiBusiness_8js_a8e90c5c49ebb236cf6e5a2dfe09eca05}{const {\bfseries R\+I\+G\+H\+T} = \char`\"{}right\char`\"{}}\label{raspiBusiness_8js_a8e90c5c49ebb236cf6e5a2dfe09eca05}
+
+\item 
+\hypertarget{raspiBusiness_8js_a54fcb9862c9c33bc35789a5bec3f18e0}{const {\bfseries S\+T\+O\+P} = \char`\"{}stop\char`\"{}}\label{raspiBusiness_8js_a54fcb9862c9c33bc35789a5bec3f18e0}
+
+\item 
+\hypertarget{raspiBusiness_8js_a46d22c29a9c876dc3494e3d3743df531}{const {\bfseries I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+M\+M\+A\+N\+D} = \char`\"{}Command not recognised available commands are\+: 'forward', 'backward', 'left', 'right', 'stop'.\char`\"{}}\label{raspiBusiness_8js_a46d22c29a9c876dc3494e3d3743df531}
+
+\item 
+\hypertarget{raspiBusiness_8js_abd02627b64b452cd92d0386c1630502c}{const {\bfseries N\+O\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R} = \char`\"{}Direction parameter was not supplied\char`\"{}}\label{raspiBusiness_8js_abd02627b64b452cd92d0386c1630502c}
+
+\item 
+\hyperlink{raspiBusiness_8js_a6c115c8d969183e980399ff23528aded}{raspi} \hyperlink{raspiBusiness_8js_a1dd9dc5fa37bf9979f25e9e1990f6eac}{move\+Zumo}
+\begin{DoxyCompactList}\small\item\em Moves the zumo in a certain direction then calls the callback. Callback gives information on whether movement was a success. \end{DoxyCompactList}\item 
+\hypertarget{raspiBusiness_8js_aa4072ba4b6b56b0fb6f4801f17ab2b34}{module {\bfseries exports}}\label{raspiBusiness_8js_aa4072ba4b6b56b0fb6f4801f17ab2b34}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Module for parsing Zumo movement commands received via H\+T\+T\+P requests. 
+
+\begin{DoxyAuthor}{Author}
+Damon Jones 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+27 Feb 2017 
+\end{DoxyDate}
+
+
+\subsection{Variable Documentation}
+\hypertarget{raspiBusiness_8js_a1dd9dc5fa37bf9979f25e9e1990f6eac}{\index{raspi\+Business.\+js@{raspi\+Business.\+js}!move\+Zumo@{move\+Zumo}}
+\index{move\+Zumo@{move\+Zumo}!raspi\+Business.\+js@{raspi\+Business.\+js}}
+\subsubsection[{move\+Zumo}]{\setlength{\rightskip}{0pt plus 5cm}{\bf raspi} move\+Zumo}}\label{raspiBusiness_8js_a1dd9dc5fa37bf9979f25e9e1990f6eac}
+
+
+Moves the zumo in a certain direction then calls the callback. Callback gives information on whether movement was a success. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & -\/ Direction to move the robot. \\
+\hline
+{\em callback} & -\/ The callback to receive status on function return. \\
+\hline
+\end{DoxyParams}
+\hypertarget{raspiBusiness_8js_a6c115c8d969183e980399ff23528aded}{\index{raspi\+Business.\+js@{raspi\+Business.\+js}!raspi@{raspi}}
+\index{raspi@{raspi}!raspi\+Business.\+js@{raspi\+Business.\+js}}
+\subsubsection[{raspi}]{\setlength{\rightskip}{0pt plus 5cm}function raspi}}\label{raspiBusiness_8js_a6c115c8d969183e980399ff23528aded}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+\{
+    var zumoInterface = require(\textcolor{stringliteral}{'../business/zumoInterface'})
+\end{DoxyCode}
+
+
+Responsible for parsing direction commands. Interacts with the zumo interface module to move the robot. 
+
