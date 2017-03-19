@@ -1,0 +1,33 @@
+M\+J\+P\+E\+G Streamer with raspicam input plugin (based on raspistill mmal source code)
+
+\section*{Discussion / Questions / Help }
+
+Probably best in this thread \href{http://www.raspberrypi.org/phpBB3/viewtopic.php?f=43&t=45178}{\tt http\+://www.\+raspberrypi.\+org/php\+B\+B3/viewtopic.\+php?f=43\&t=45178}
+
+\section*{Instructions }
+
+If you ran the basic build, you can run from the mjpeg streamer experimental folder with\+: ``` export L\+D\+\_\+\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+A\+T\+H=. ./mjpg\+\_\+streamer -\/o \char`\"{}output\+\_\+http.\+so -\/w ./www\char`\"{} -\/i \char`\"{}input\+\_\+raspicam.\+so\char`\"{} ```
+
+You can specify options, like in raspivid\+: ``` export L\+D\+\_\+\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+P\+A\+T\+H=. ./mjpg\+\_\+streamer -\/o \char`\"{}output\+\_\+http.\+so -\/w ./www\char`\"{} -\/i \char`\"{}input\+\_\+raspicam.\+so -\/x 1280 -\/y 720 -\/fps 15 -\/ex night\char`\"{} ```
+
+It does support upto 1080p 30fps, but the bandwidth produced would be more than the usb bus (and therefore ethernet port / wifi dongle) can provide. 720p 15fps is a good compromise.
+
+Here's some help for this input plugin\+: \subsection*{``` }
+
+\subsection*{Help for input plugin..\+: raspicam input plugin }
+
+The following parameters can be passed to this plugin\+:
+
+\mbox{[}-\/fps $\vert$ --framerate\mbox{]}...\+: set video framerate, default 5 frame/sec \mbox{[}-\/x $\vert$ --width \mbox{]}........\+: width of frame capture, default 640 \mbox{[}-\/y $\vert$ --height\mbox{]}........\+: height of frame capture, default 480 \mbox{[}-\/quality\mbox{]}.............\+: set J\+P\+E\+G quality 0-\/100, default 85 \mbox{[}-\/usestills\mbox{]}...........\+: uses stills mode instead of video mode \mbox{[}-\/preview\mbox{]}.............\+: enable full screen preview
+
+-\/sh \+: Set image sharpness (-\/100 to 100) -\/co \+: Set image contrast (-\/100 to 100) -\/br \+: Set image brightness (0 to 100) -\/sa \+: Set image saturation (-\/100 to 100) -\/\+I\+S\+O \+: Set capture I\+S\+O -\/vs \+: Turn on video stabilisation -\/ev \+: Set E\+V compensation -\/ex \+: Set exposure mode (see raspistill notes) -\/awb \+: Set A\+W\+B mode (see raspistill notes) -\/ifx \+: Set image effect (see raspistill notes) -\/cfx \+: Set colour effect (U\+:V) -\/mm \+: Set metering mode (see raspistill notes) -\/rot \+: Set image rotation (0-\/359) -\/stats \+: Compute image stats for each picture (reduces noise) -\/drc \+: Dynamic range compensation level (see raspistill notes) -\/hf \+: Set horizontal flip \subsection*{-\/vf \+: Set vertical flip }
+
+``` Some of the camera options like I\+S\+O may not work due to it not working in the mmal-\/libs.
+
+Video mode is the default as it allows much smoother video (higher framerates). Stills mode allows you to use the full-\/frame of the sensor, but has a max framerate of around 8fps, probably less. Use stills mode with low F\+P\+S (e.\+g. 1 or 2).
+
+In order to have preview output shown on the raspi screen add the -\/preview option.
+
+This should run indefinitely. ctrl-\/c closes mjpeg streamer and raspicam gracefully.
+
+Based on \href{https://github.com/raspberrypi/userland/blob/master/host_applications/linux/apps/raspicam/RaspiStill.c}{\tt https\+://github.\+com/raspberrypi/userland/blob/master/host\+\_\+applications/linux/apps/raspicam/\+Raspi\+Still.\+c} modified mmal header and source files from \href{https://github.com/raspberrypi/userland/tree/master/interface/mmal}{\tt https\+://github.\+com/raspberrypi/userland/tree/master/interface/mmal} 

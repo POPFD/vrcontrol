@@ -1,0 +1,43 @@
+This input plugin uses Open\+C\+V to read from supported video sources, optionally running the image through a filter plugin that can be specified on the command line.
+
+If you're not using the image filtering functionality of this plugin, you're probably better off using some other input plugin as this plugin will probably consume more C\+P\+U resources.
+
+This plugin has only been tested with Open\+C\+V 3.\+1.\+0, will probably not work with Open\+C\+V 2.\+x without some adjustments.
+
+\section*{Usage }
+
+\subsection*{``` }
+
+\subsection*{Help for input plugin..\+: Open\+C\+V Input plugin }
+
+The following parameters can be passed to this plugin\+:
+
+\mbox{[}-\/d $\vert$ --device \mbox{]}.......\+: video device to open (your camera) \mbox{[}-\/r $\vert$ --resolution \mbox{]}...\+: the resolution of the video device, can be one of the following strings\+: Q\+Q\+V\+G\+A Q\+C\+I\+F C\+G\+A Q\+V\+G\+A C\+I\+F V\+G\+A S\+V\+G\+A X\+G\+A H\+D S\+X\+G\+A U\+X\+G\+A F\+H\+D
+
+or a custom value like the following example\+: 640x480 \mbox{[}-\/f $\vert$ --fps \mbox{]}..........\+: frames per second \subsection*{\mbox{[}-\/q $\vert$ --quality \mbox{]} .....\+: set quality of J\+P\+E\+G encoding }
+
+Optional parameters (may not be supported by all cameras)\+:
+
+\mbox{[}-\/br \mbox{]}.................\+: Set image brightness (integer) \mbox{[}-\/co \mbox{]}.................\+: Set image contrast (integer) \mbox{[}-\/sh \mbox{]}.................\+: Set image sharpness (integer) \mbox{[}-\/sa \mbox{]}.................\+: Set image saturation (integer) \mbox{[}-\/ex \mbox{]}.................\+: Set exposure (off, or integer) \subsection*{\mbox{[}-\/gain \mbox{]}...............\+: Set gain (integer) }
+
+Optional filter plugin\+: \mbox{[} -\/filter \mbox{]}............\+: filter plugin .so \subsection*{\mbox{[} -\/fargs \mbox{]}.............\+: filter plugin arguments }
+
+```
+
+\section*{Filter plugins }
+
+You can specify a filter plugin to load via the \char`\"{}-\/-\/filter\char`\"{} argument\+: \begin{DoxyVerb}mjpg_streamer -i "input_opencv.so --filter cvfilter_cpp.so" .. 
+\end{DoxyVerb}
+
+
+The following plugins are included\+:
+
+
+\begin{DoxyItemize}
+\item cvfilter\+\_\+cpp\+: barebones example
+\item cvfilter\+\_\+py\+: Embeds a python interpreter to allow you to create a filter script in Python
+\end{DoxyItemize}
+
+\subsection*{Authors }
+
+Dustin Spicuzza (\href{mailto:dustin@virtualroadside.com}{\tt dustin@virtualroadside.\+com}) 

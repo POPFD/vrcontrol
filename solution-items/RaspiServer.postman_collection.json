@@ -1,0 +1,51 @@
+{
+	"variables": [],
+	"info": {
+		"name": "RaspiServer",
+		"_postman_id": "24ccd603-9cc6-1d53-7971-42200882a666",
+		"description": "Raspberry pi server endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "MotorMovement",
+			"request": {
+				"url": "http://localhost:8001/api/move-zumo",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"direction\" : \"left\"\n}"
+				},
+				"description": "Send direction signal to move zumo ardiuno connected to raspi server"
+			},
+			"response": []
+		},
+		{
+			"name": "MotorMovement (External)",
+			"request": {
+				"url": "http://rapiro-pi.ddns.net:8001/api/move-zumo",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"direction\" : \"forward\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
